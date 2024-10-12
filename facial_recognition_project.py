@@ -53,7 +53,7 @@ print("\nNaive Bayes Classification Report:")
 print(classification_report(y_test, nb_pred))
 
 
-# Naive Bayes sınıflandırıcısının doğru ve yanlış tahminlerini ayır
+# Naive Bayes sınıflandırıcısının doğru ve yanlış tahminlerini ayiriyoruz
 correct_predictions = []
 incorrect_predictions = []
 for true_label, pred_label in zip(y_test, nb_pred):
@@ -63,7 +63,7 @@ for true_label, pred_label in zip(y_test, nb_pred):
         incorrect_predictions.append((true_label, pred_label))
 
 
-# Doğru sınıflandırılan örnekleri görselleştir
+# Doğru sınıflandırılan örnekleri görselleştiriyoruz
 fig, axes = plt.subplots(3, 3, figsize=(8, 8))
 for i, (true_label, pred_label) in enumerate(correct_predictions[:9]):
     row = i // 3
@@ -74,7 +74,7 @@ for i, (true_label, pred_label) in enumerate(correct_predictions[:9]):
 plt.suptitle('Doğru Sınıflandırılan Örnekler')
 plt.show()
 
-# Yanlış sınıflandırılan örnekleri görselleştir
+# Yanlış sınıflandırılan örnekleri görselleştiriyoruz
 fig, axes = plt.subplots(3, 3, figsize=(8, 8))
 for i, (true_label, pred_label) in enumerate(incorrect_predictions[:9]):
     row = i // 3
@@ -96,7 +96,7 @@ plt.show()
 
 
 
-# Naive Bayes sınıflandırıcısının doğruluğunu görselleştir
+# Naive Bayes sınıflandırıcısının doğruluğunu görselleştiriyoruz
 plt.figure(figsize=(8, 6))
 plt.plot([1], [nb_accuracy], marker='o', label='Naive Bayes')
 plt.title('Sınıflandırıcıların Doğruluk Karşılaştırması')
@@ -107,7 +107,7 @@ plt.legend()
 plt.show()
 
 
-# Veri setindeki tüm piksellerin değer dağılımını görselleştir
+# Veri setindeki tüm piksellerin değer dağılımını görselleştiriyoruz
 plt.figure(figsize=(8, 6))
 plt.hist(X.flatten(), bins=50, edgecolor='k')
 plt.title('Olivetti Yüzleri Veri Kümesi Piksel Değer Dağılımı')
@@ -125,7 +125,7 @@ print(f"Ortalama Doğruluk: {np.mean(nb_scores):.2f}")
 # Naive Bayes sınıflandırıcısı için konfüzyon matrisi
 cm = confusion_matrix(y_test, nb_pred)
 
-# Konfüzyon matrisini görselleştir
+# Konfüzyon matrisini görselleştiriyoruz
 plt.figure(figsize=(8, 8))
 sns.heatmap(cm, annot=True, cmap='Blues', fmt='g')
 plt.title('Naive Bayes Sınıflandırıcısı Konfüzyon Matrisi')
@@ -134,11 +134,7 @@ plt.ylabel('Gerçek Sınıf')
 plt.show()
 
 
-
-
-
-
-# Define the MLP model
+# MLP modelini tanimliyoruz
 model = Sequential()
 model.add(Flatten(input_shape=(4096,)))  # Flatten the input data
 model.add(Dense(256, activation='relu'))
@@ -157,12 +153,7 @@ loss, accuracy = model.evaluate(X_test, y_test)
 print(f"Test Accuracy: {accuracy:.2f}")
 
 
-
-
-
-
-
-# Define the CNN model
+# CNN modelini tanimliyoruz
 model = Sequential()
 model.add(Conv2D(32, (3, 3), activation='relu', input_shape=(64, 64, 1)))
 model.add(MaxPooling2D((2, 2)))
@@ -183,15 +174,6 @@ model.fit(X_train, y_train, epochs=20, batch_size=32, validation_data=(X_test, y
 # Evaluate the model
 loss, accuracy = model.evaluate(X_test, y_test)
 print(f"Test Accuracy: {accuracy:.2f}")
-
-
-
-
-
-
-
-
-
 
 
 
